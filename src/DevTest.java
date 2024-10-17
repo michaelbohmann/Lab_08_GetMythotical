@@ -5,12 +5,21 @@ public class DevTest
     public static void main(String[] args)
     {
         Scanner in = new Scanner(System.in);
-
+        /*
         String name = getNonZeroLenString(in,"Enter your name" );
         System.out.println("You said your name is " + name);
 
         int age = getInt(in, "Enter your age" );
         System.out.print("You said your age is " + age);
+
+        double salary = getDouble(in, "Enter your salary" );
+        System.out.print("Your salary is " + salary);
+
+        int favNum = getRangedInt(in, "Enter your fav num", 1, 10);
+        System.out.println("You said fav num is " + favNum);
+         */
+        double income = getRangedDouble(in, "Enter your income", 5000, 100000);
+        System.out.println("You said the income is " + income);
     }
 
     /**
@@ -62,7 +71,113 @@ public class DevTest
             else
             {
                 trash = pipe.nextLine();
-                System.out.println("You must enter a valid integer not" + trash);
+                System.out.println("You must enter a valid integer not " + trash);
+            }
+        }while(!done);
+
+        return retVal;
+    }
+
+    /**
+     * gets an unconstrained double value from the user
+     * @param pipe Scanner used to get input from user
+     * @param prompt an unconstrined double value
+     * @return
+     */
+
+    public static double getDouble(Scanner pipe, String prompt)
+    {
+        double retVal = 0;
+        String trash = " ";
+        boolean done = false;
+
+        do {
+            System.out.print(prompt + ": ");
+            if (pipe.hasNextDouble())
+            {
+                retVal = pipe.nextDouble();
+                pipe.nextLine();
+                done = true;
+            }
+            else
+            {
+                trash = pipe.nextLine();
+                System.out.println("You must enter a valid integer not " + trash);
+            }
+        }while(!done);
+
+        return retVal;
+    }
+
+    /**
+     * gets a int value from the user within a specified inclusive range
+     * @param pipe Scanner to use for input
+     * @param prompt prompt that tells the user what to input
+     * @return an int value within the specified range
+     */
+
+    public static int getRangedInt(Scanner pipe, String prompt, int low, int high)
+    {
+        int retVal = 0;
+        String trash = " ";
+        boolean done = false;
+
+        do {
+            System.out.print(prompt + " [" + low + " - " + high +"]: ");
+            if (pipe.hasNextInt())
+            {
+                retVal = pipe.nextInt();
+                pipe.nextLine();
+                if (retVal >= low && retVal <= high)
+                {
+                    done = true;
+                }
+                else
+                {
+                    System.out.println("You must enter a valid int in range [" + low + " - " + high + "]: ");
+                }
+            }
+            else
+            {
+                trash = pipe.nextLine();
+                System.out.println("You must enter a valid integer not " + trash);
+            }
+        }while(!done);
+
+        return retVal;
+    }
+
+    /**
+     * gets a int value from the user within a specified inclusive range
+     * @param pipe Scanner to use for input
+     * @param prompt prompt that tells the user what to input
+     * @return an int value within the specified range
+     */
+    public static double getRangedDouble(Scanner pipe, String prompt, double low, double high)
+    {
+        double retVal = 0;
+        String trash = " ";
+        boolean done = false;
+
+        do {
+            System.out.print(prompt + " [" + low + " - " + high +"]: ");
+            if (pipe.hasNextDouble())
+            {
+                retVal = pipe.nextDouble();
+                pipe.nextLine();
+                if (retVal >= low && retVal <= high)
+                {
+                    done = true;
+                }
+                else
+                {
+                    System.out.println("You must enter a valid int in range [" + low + " - " + high + "]: ");
+                }
+            }
+            else
+            {
+                trash = pipe.nextLine();
+                System.out.println("You must enter a valid integer not " + trash);
             }
         }while(!done);
 
