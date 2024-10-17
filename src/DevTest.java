@@ -17,9 +17,12 @@ public class DevTest
 
         int favNum = getRangedInt(in, "Enter your fav num", 1, 10);
         System.out.println("You said fav num is " + favNum);
-         */
+
         double income = getRangedDouble(in, "Enter your income", 5000, 100000);
         System.out.println("You said the income is " + income);
+         */
+        boolean leaveClass = getYNConfirm(in, "Are you ready to leave class?");
+        System.out.println("leaveClass");
     }
 
     /**
@@ -29,7 +32,6 @@ public class DevTest
      * @param prompt prompt to tell the user what to input
      * @return String that is at least one character
      */
-
     public static String getNonZeroLenString(Scanner pipe, String prompt)
     {
         String retVal = "";
@@ -183,4 +185,45 @@ public class DevTest
 
         return retVal;
     }
+
+        /**
+         * get a String Val from the user which must be at least one character
+         *
+         * @param pipe scanner to use to read the input
+         * @param prompt prompt to tell the user what to input
+         * @return return true for Yy (yes) false for Nn(no)
+         */
+    public static boolean getYNConfirm(Scanner pipe, String prompt)
+        {
+            String input = "";
+            boolean retVal = false;
+            boolean done = false;
+
+            do
+            {
+                System.out.print(prompt + "[YyNn]: ");
+                input = pipe.nextLine();
+                if(input.isEmpty())
+                {
+                    System.out.println("You must enter y or n!");
+                }
+                else if(input.equalsIgnoreCase("Y"))
+                {
+                    retVal = true;
+                    done = true;
+                }
+                else if(input.equalsIgnoreCase("N"))
+                {
+                    retVal = false;
+                    done = true;
+                }
+                else
+                {
+                    System.out.println("You must enter Y or N! Not: " + input);
+                }
+
+            }while(!done);
+
+            return retVal;
+        }
 }

@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class SafeInput
 {
+
     /**
      * get a String Val from the user which must be at least one character
      *
@@ -160,6 +161,48 @@ public class SafeInput
                 trash = pipe.nextLine();
                 System.out.println("You must enter a valid integer not " + trash);
             }
+        }while(!done);
+
+        return retVal;
+    }
+
+
+    /**
+     * get a String Val from the user which must be at least one character
+     *
+     * @param pipe scanner to use to read the input
+     * @param prompt prompt to tell the user what to input
+     * @return return true for Yy (yes) false for Nn(no)
+     */
+    public static boolean getYNConfirm(Scanner pipe, String prompt)
+    {
+        String input = "";
+        boolean retVal = false;
+        boolean done = false;
+
+        do
+        {
+            System.out.print(prompt + "[YyNn]: ");
+            input = pipe.nextLine();
+            if(input.isEmpty())
+            {
+                System.out.println("You must enter y or n!");
+            }
+            else if(input.equalsIgnoreCase("Y"))
+            {
+                retVal = true;
+                done = true;
+            }
+            else if(input.equalsIgnoreCase("N"))
+            {
+                retVal = false;
+                done = true;
+            }
+            else
+            {
+                System.out.println("You must enter Y or N! Not: " + input);
+            }
+
         }while(!done);
 
         return retVal;
