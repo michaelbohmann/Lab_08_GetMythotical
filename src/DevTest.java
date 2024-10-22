@@ -5,7 +5,7 @@ public class DevTest
     public static void main(String[] args)
     {
         Scanner in = new Scanner(System.in);
-        /*
+
         String name = getNonZeroLenString(in,"Enter your name" );
         System.out.println("You said your name is " + name);
 
@@ -20,7 +20,7 @@ public class DevTest
 
         double income = getRangedDouble(in, "Enter your income", 5000, 100000);
         System.out.println("You said the income is " + income);
-         */
+
         boolean leaveClass = getYNConfirm(in, "Are you ready to leave class?");
         System.out.println("leaveClass");
     }
